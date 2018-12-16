@@ -24,14 +24,14 @@ public class LoginPageTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("start-fullscreen");
         driver = new ChromeDriver(options);
-        //driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.get("https://www.michaelkors.com/");
 
 
         //2.Enter login information (Login page)
 
         LoginPage loginPage = new LoginPage(driver);
-        Thread.sleep(30000);
+        Thread.sleep(10000);
 
        // loginPage.closePopUpWindow();
         loginPage.navigateToLoginForm();
@@ -41,8 +41,9 @@ public class LoginPageTest {
 
         //3.Get Confirmation (Dashboard page)
         DashboardPage dashboardPage = new DashboardPage(driver);
+        Thread.sleep(5000);
         String conf = dashboardPage.getLoginConfirmation();
-        Assert.assertEquals("Welcome Back", conf);
+        Assert.assertEquals("Hello, Alex", conf);
 
         //4.Close the driver
         loginPage.tearDown();
