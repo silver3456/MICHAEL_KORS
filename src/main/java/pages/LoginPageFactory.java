@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,6 +20,9 @@ public class LoginPageFactory {
 
     @FindBy(xpath = "//span[text() = 'Remember me']/following::button[@type = 'submit']")
     WebElement signInButton;
+
+    @FindBy(xpath = "//a[@title = 'Sign In']")
+    WebElement signInLink;
 
     //Steps
     public void withUsername(String username) {
@@ -41,6 +45,10 @@ public class LoginPageFactory {
         withUsername(username);
         withPassword(password);
         clickSignIn();
+    }
+
+    public void navigateToLoginForm() {
+        driver.findElement(By.xpath("//a[@title = 'Sign In']")).click();
     }
 
     public void tearDown() {
