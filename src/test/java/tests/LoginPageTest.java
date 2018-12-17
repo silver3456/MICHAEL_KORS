@@ -17,8 +17,6 @@ public class LoginPageTest {
     @Test
     public void loginTestPOM() throws InterruptedException {
 
-        //LoginPage loginPage = new LoginPage(driver);
-
         //1.Initialize driver
 
         ChromeOptions options = new ChromeOptions();
@@ -31,7 +29,7 @@ public class LoginPageTest {
         //2.Enter login information (Login page)
 
         LoginPage loginPage = new LoginPage(driver);
-        Thread.sleep(10000);
+        Thread.sleep(20000);
 
        // loginPage.closePopUpWindow();
         loginPage.navigateToLoginForm();
@@ -41,11 +39,13 @@ public class LoginPageTest {
 
         //3.Get Confirmation (Dashboard page)
         DashboardPage dashboardPage = new DashboardPage(driver);
-        Thread.sleep(5000);
+        Thread.sleep(7000);
+
+        //4.Assertions
         String conf = dashboardPage.getLoginConfirmation();
         Assert.assertEquals("Hello, Alex", conf);
 
-        //4.Close the driver
+        //5.Close the driver
         loginPage.tearDown();
     }
 }
